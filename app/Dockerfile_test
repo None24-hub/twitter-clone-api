@@ -1,0 +1,21 @@
+# Dockerfile
+
+# извлекаем официальный образ docker
+FROM python:3.12
+
+RUN apt update && apt install -y postgresql-client
+
+# установка рабочей директории
+WORKDIR /app
+
+# установка переменных env
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+COPY requirements_test.txt .
+
+# установка зависимостей
+RUN pip install -r requirements_test.txt
+
+# копируем остальной код
+COPY . .
