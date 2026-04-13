@@ -139,3 +139,15 @@ dmypy.json
 .swp
 
 prettifier.py
+
+# local env files
+*.env
+
+# local databases
+*.db
+
+# uploaded/generated media
+app/storage/media/
+
+# IDE
+.idea/
