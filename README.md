@@ -1,150 +1,90 @@
-# Twitter Clone — Итоговый проект Python Advanced
+# 🚀 Twitter Clone API (FastAPI Backend)
 
-Учебный проект — упрощённый клон Twitter: публикация твитов, лайки, подписки, просмотр ленты, загрузка медиа и работа с профилями пользователей.  
-Backend реализован как полноценный REST API и может использоваться не только с текущим интерфейсом, но и с любым другим frontend-приложением.
+Backend API для сервиса микроблогинга (аналог Twitter).
+Реализует работу с пользователями, твитами, лайками и подписками.
 
-Проект соответствует требованиям итогового задания Python Advanced.
-
----
-
-## 🚀 Стек технологий
-
-- **Python** — основной язык
-- **FastAPI** — backend
-- **SQLAlchemy 2.0 (async)** — ORM
-- **PostgreSQL 16** — база данных
-- **pytest** — тесты
-- **Docker + docker-compose** — запуск и оркестрация
-- **Nginx** — раздача фронтенда
+Проект демонстрирует навыки разработки REST API, работы с базой данных и асинхронного backend на Python.
 
 ---
 
-## ⚙️ Как запустить проект
+## ⚙️ Стек технологий
 
-### 1. Клонировать репозиторий
+* Python
+* FastAPI
+* PostgreSQL
+* SQLAlchemy (async)
+* Docker / docker-compose
+* Nginx
+* Pytest
 
+---
 
-git clone <URL_ВАШЕГО_РЕПОЗИТОРИЯ>
+## 🔥 Основной функционал
+
+* Регистрация и получение профиля пользователя
+* Публикация и удаление твитов
+* Лайки и подписки
+* Формирование ленты
+* Загрузка медиа
+* REST API с документацией (Swagger)
+
+---
+
+## 🧠 Что реализовано
+
+* Асинхронный backend (FastAPI + async SQLAlchemy)
+* Работа с PostgreSQL
+* Контейнеризация через Docker
+* Разделение логики (routers / models / schemas)
+* REST API архитектура
+* Автоматические тесты (pytest)
+
+---
+
+## 🚀 Запуск проекта
+
+```bash
+git clone <repo_url>
 cd python_advanced_diploma
-
-
-### 2. Запуск сервиса (development-профиль)
 docker compose --profile dev up -d
+```
 
+После запуска:
 
-## Будут запущены контейнеры:
+* Swagger: http://localhost:8000/docs
+* Frontend: http://localhost
 
-**Сервис**	**Описание**
-api    	      backend (FastAPI)
-db	          PostgreSQL
-server	      UI + статика (клон Twitter)
-### 3. Доступы
+---
 
-## Swagger (REST API):
-👉 http://localhost:8000/docs
+## 🔐 Тестовый доступ
 
-## Фронтенд (интерфейс Twitter):
-👉 http://localhost
-
-## 🔐 Авторизация по API-Key
-
-**Проект использует простую авторизацию по API ключу:**
-
-## api-key: <ваш ключ>
-
-
-## В тестовой сборке доступен пользователь:
-
-username: test user
+```
 api-key: test
+```
 
-
-В Swagger нажмите Authorize, затем введите test в поле api-key.
-
-## 📌 Основной функционал
-## ✔ Публикация твитов
-
-POST /api/tweets
-Поддерживается прикрепление изображений через tweet_media_ids[].
-
-## ✔ Удаление твитов
-
-DELETE /api/tweets/{tweet_id}
-
-## ✔ Лайки
-
-Поставить лайк: POST /api/tweets/{id}/likes
-
-Убрать лайк: DELETE /api/tweets/{id}/likes
-
-## ✔ Подписки
-
-Подписаться: POST /api/users/{id}/follow
-
-Отписаться: DELETE /api/users/{id}/follow
-
-## ✔ Лента твитов
-
-GET /api/tweets
-
-Лента формируется из пользователей, на которых подписан текущий.
-Сортировка — по популярности (числу лайков).
-
-## ✔ Загрузка изображений
-
-POST /api/medias
-Формат — multipart/form-data.
-
-## ✔ Профили
-
-Текущий пользователь: GET /api/users/me
-
-Другой пользователь: GET /api/users/{id}
+---
 
 ## 📂 Структура проекта
+
+```
 app/
- ├── main.py                # Точка входа FastAPI
- ├── routers/               # Роуты (users, tweets, media)
- ├── models/                # SQLAlchemy модели
- ├── schemas/               # Pydantic-схемы
- ├── database/              # Подключение к БД, engine, session
- ├── utils/                 # Вспомогательные функции
- └── static/                # Медиафайлы (изображения)
+ ├── routers/
+ ├── models/
+ ├── schemas/
+ ├── database/
+ └── utils/
+```
 
-server/                     # Интерфейс и конфигурация Nginx
-init_postgres/              # Скрипты для инициализации БД
-docker-compose.yaml
+---
 
-## 🧪 Запуск тестов
+## 🧪 Тесты
+
+```bash
 sh run_scripts/start_tests.sh
+```
 
-## Покрытие включает:
+---
 
-**публикация твитов**
+## 📌 О проекте
 
-**лайки**
-
-**подписки**
-
-**лента**
-
-**работа с профилями**
-
-## 📝 Особенности реализации
-
-**Полностью асинхронный backend на FastAPI**
-
-**Авторизация по API-Key**
-
-**Swagger-документация доступна сразу после запуска**
-
-**Использование .env файлов для конфигурации**
-
-**Отдельные профили docker-compose: dev и test**
-
-**Хранение медиа в Docker volume**
-
-## 📄 Лицензия
-
-**Проект выполнен в рамках итогового задания курса Python Advanced
-и предназначен для учебных целей.**
+Проект разработан в рамках обучения, но отражает реальные подходы к построению backend-сервисов.
