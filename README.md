@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚀 Twitter Clone API (FastAPI Backend)
 
 Backend API для сервиса микроблогинга (аналог Twitter).
@@ -88,3 +89,6 @@ sh run_scripts/start_tests.sh
 ## 📌 О проекте
 
 Проект разработан в рамках обучения, но отражает реальные подходы к построению backend-сервисов.
+=======
+# twitter-clone-api
+>>>>>>> 9fe2702ddb78b2887c8d16dc055f7021b3015b73
